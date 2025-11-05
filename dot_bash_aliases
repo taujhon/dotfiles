@@ -1,4 +1,4 @@
-suco() { su "$USER" -c "$*" }
+suco() { su "$USER" -c "$*"; }
 
 get_ipaddress() {
   ip -4 -o address | awk '/wlan0/ { sub(/\/./, ""); print $4 }'
@@ -98,8 +98,6 @@ alias get_color='magick '\''{}'\'' -resize 200x200 -colors 5 \
 # backup
 alias clone='rsync -ahrzLR --info=progress2 --mkpath --no-i-r'
 alias clonetest='rsync -ahnrzLR --info=progress2 --mkpath --no-i-r' 
-alias mnt_bu='udisksctl mount -b $BAK_DEV'
-alias umnt_bu='sync && udisksctl unmount -b $BAK_DEV'
 
 # bash
 alias binds='bind -P'
@@ -126,3 +124,4 @@ alias gdl='gallery-dl \
 alias gdl_view='gallery-dl \
   --destination ~/.gallery-dl/ \
   --exec-after "~/scripts/gdlv.sh {_directory}"'
+
