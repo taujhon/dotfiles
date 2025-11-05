@@ -2,6 +2,8 @@
 
 source ~/.local/share/omarchy/default/bash/rc
 
+# ENVIRONMENT
+
 append_path() {
   case ":$PATH:" in
     *:"$1":*) ;;
@@ -12,3 +14,14 @@ append_path() {
 append_path "/opt/android-sdk/cmdline-tools/latest/bin"
 
 export PATH
+
+# SHELL TOOLS
+
+cmds="
+"
+
+for cmd in $cmds; do
+  if command -v $(cut -d ' ' -f 1) >/dev/null; then
+    source <(cmd)
+  fi
+done

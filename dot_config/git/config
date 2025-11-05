@@ -1,0 +1,89 @@
+[core]
+  pager = bat
+  compression = 9
+  whitespace = error
+  preloadindex = true
+  autocrlf = input
+[advice]
+  addEmptyPathspec = false
+  pushNonFastForward = false
+  statusHints = false
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+[pull]
+  default = current
+	rebase = true
+[push]
+  autoSetupRemote = true
+  default = current
+  followTags = true
+[init]
+	defaultBranch = dev
+[status]
+  branch = true
+  showStash = true
+  showUntrackedFiles = all
+[diff]
+  context = 3
+  renames = copies
+  interHunkContext = 10
+[diff-so-fancy]
+  markEmptyLines = false
+[pager]
+  diff = diff-so-fancy | $PAGER
+[interactive]
+  diffFilter = diff-so-fancy --patch
+  singlekey = true
+[commit]
+  template = ~/.config/git/template
+  ; gpgSign = true
+[rebase]
+  autoStash = true
+  missingCommitCheck = warn
+[log]
+  abbrevCommit = true
+  graphColors = blue,yellow,cyan,magenta,green,red
+[branch]
+  sort = -committerdate
+[tag]
+  sort = -taggerdate
+[color]
+	; pager = no
+[color "diff"]
+  meta       = black bold
+  frag       = magenta
+  context    = white
+  whitespace = yellow reverse
+  old        = red
+[color "decorate"]
+  HEAD         = red
+  branch       = blue
+  tag          = yellow
+  remoteBranch = magenta
+[color "branch"]
+  current = magenta
+  local = default
+  remote = yellow
+  upstrean = green
+  plain = blue
+[url "https://github.com/"]
+  insteadof = "gh:"
+[url "https://gist.github.com/"]
+  insteadof = "gist:"
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[user]
+	name = Taujhon Maharlika
+	email = taujhonmaharlika@gmail.com
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
