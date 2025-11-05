@@ -1,0 +1,9 @@
+set editing-mode vi
+set show-mode-in-prompt on
+#set vi-ins-mode-string \1\e[1;46m\e[30m\2 INS \1\e[0m\e[5 q\2
+#set vi-cmd-mode-string \1\e[1;43m\e[30m\2 CMD \1\e[0m\e[2 q\2
+set vi-ins-mode-string \1\e[5 q\2
+set vi-cmd-mode-string \1\e[2 q\2
+
+set keymap vi-insert
+RETURN: "\e\n"
