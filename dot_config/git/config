@@ -9,11 +9,20 @@
   pushNonFastForward = false
   statusHints = false
 [alias]
-	co = checkout
 	br = branch
-	ci = commit
-	st = status
-  lg = log --graph
+  cl = clone
+	co = checkout
+  pu = push
+  up = pull
+  upr = pull --rebase
+	ci = commit -v
+	st = status --short
+  di = diff --output-indicator-new=" " --output-indicator-old=" "
+  adp = add --patch
+  radd = remote add
+  rs = restore --paged
+  log = log --all --graph --pretty=format:"%C(magenta)%h %an %ar%C(auto) %D%n%s%n"
+  rb-abort = rebase abort
 [pull]
   default = current
 	rebase = true
