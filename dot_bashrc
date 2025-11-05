@@ -15,6 +15,20 @@ append_path "/opt/android-sdk/cmdline-tools/latest/bin"
 
 export PATH
 
+# FUNCTIONS
+
+cdmp() {
+  dirs="$(ls /run/media/$USER)"
+  dircount=$(echo "$dirs" | wc -l)
+  if [[ $dircount -gt 1 ]]; then
+    cd "$(echo "$dirs" | fzf || echo .)"
+  elif [[ $dircount -eq 1 ]]; then
+    cd "/run/media/$USER/$dirs"
+  fi
+  unset dirs
+  unset dircount
+}
+
 # SHELL TOOLS
 
 cmds="
