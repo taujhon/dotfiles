@@ -46,6 +46,7 @@ alias py='python3'
 alias ipy='ipython3 --no-banner --nosep'
 alias hmm='h-m-m'
 alias e='$EDITOR'
+alias se='sudoedit $EDITOR'
 alias cls='clear'
 alias now='date +%m-%d-%Y'
 alias habanow='date +%m/%d/%Y'
@@ -125,3 +126,10 @@ alias gdl_view='gallery-dl \
   --destination ~/.gallery-dl/ \
   --exec-after "~/scripts/gdlv.sh {_directory}"'
 
+# chezmoi
+alias cm='chezmoi'
+alias cma='chezmoi add'
+alias cmd='chezmoi diff'
+alias cme='chezmoi edit'
+alias cml='chezmoi list'
+alias cmp='chezmoi apply'
