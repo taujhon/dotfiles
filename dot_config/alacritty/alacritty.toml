@@ -12,8 +12,10 @@ size = 9
 [window]
 padding.x = 4
 padding.y = 4
+dynamic_padding = true
+resize_increments = true
 decorations = "None"
-opacity = 0.5
+opacity = 0.8
 
 [keyboard]
 bindings = [
