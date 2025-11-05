@@ -18,7 +18,7 @@ export PATH
 # FUNCTIONS
 
 cdmp() {
-  dirs="$(ls /run/media/$USER)"
+  dirs="$(/usr/bin/ls /run/media/$USER)"
   dircount=$(echo "$dirs" | wc -l)
   if [[ $dircount -gt 1 ]]; then
     cd "$(echo "$dirs" | fzf || echo .)"
