@@ -13,6 +13,7 @@
 	br = branch
 	ci = commit
 	st = status
+  lg = log --graph
 [pull]
   default = current
 	rebase = true
