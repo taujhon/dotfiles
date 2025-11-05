@@ -23,5 +23,9 @@ bindings = [
   { key = "Insert", mods = "Control", action = "Copy" }
 ]
 
+[cursor]
+blink_interval = 300
+blink_timeout = 0
+
 [terminal]
 shell = { program = "/usr/bin/bash", args = ["-l"] }
