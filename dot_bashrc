@@ -28,7 +28,6 @@ source ~/.bash_aliases
 
 set -o vi
 shopt -s autocd
-shopt -s cdspell
 shopt -s direxpand
 shopt -s dirspell
 shopt -s globstar
