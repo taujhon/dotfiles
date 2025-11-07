@@ -42,6 +42,8 @@ croc_receive() {
   CROC_SECRET="$1" croc --ip "$2"
 }
 
+unalias cd
+
 alias py='python3'
 alias ipy='ipython3 --no-banner --nosep'
 alias hmm='h-m-m'
