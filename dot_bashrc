@@ -7,6 +7,13 @@ append_path() {
   esac
 }
 
+clean_path() {
+  PATH="$(printf "${PATH//:/\\n}" | awk '!visited[$0]++' | tr '\n' ':' | sed 's/:$//')"
+}
+
+clean_path
+
+append_path "/opt/android-sdk/cmdline-tools/latest/bin"
 append_path "$HOME/.cargo/bin"
 append_path "$HOME/.config/composer/vendor/bin"
 append_path "$HOME/.local/bin"
