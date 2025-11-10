@@ -1,0 +1,14 @@
+[font]
+normal = { family = "JetBrainsMono Nerd Font" }
+size = 20
+
+[window]
+padding.x = 4
+padding.y = 4
+dynamic_padding = true
+resize_increments = true
+decorations = "None"
+opacity = 1.0
+
+[colors.primary]
+background = "#000000"
