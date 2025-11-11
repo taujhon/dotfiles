@@ -38,10 +38,9 @@ cmd trash ${{
 
 cmd delete %{{
   set -f
-  printf "$fx\n"
-  printf "delete?[y/n]"
+  printf "delete '$fx'?[y/n]"
   read ans
-  [ "$ans" = "y" ] && rm -rf $fx
+  [[ $ans = "y" ]] && rm -rf $fx
 }}
 
 cmd mkdir %{{

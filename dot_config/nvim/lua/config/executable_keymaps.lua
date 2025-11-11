@@ -77,3 +77,5 @@ end, { desc = "Toggle statusline" })
 vim.keymap.set("n", "<Leader>aa", "ggVG", { desc = "Select all" })
 vim.keymap.set("n", "<Leader>ay", "ggVGy", { desc = "Yank all" })
 vim.keymap.set("n", "<Leader>ad", "ggVGd", { desc = "Delete all" })
+
+vim.keymap.set("n", "<Leader>br", "<Cmd>edit<CR>", { desc = "Reload file" })
