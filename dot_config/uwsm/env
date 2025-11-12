@@ -10,5 +10,8 @@ source ~/.config/uwsm/default
 # Activate mise if present on the system
 omarchy-cmd-present mise && eval "$(mise activate bash)"
 
-# Firfox native wayland
+# Firefox native wayland
 export MOZ_ENABLE_WAYLAND=1
+
+# Include local user bin directory in the path
+export PATH=$HOME/.local/bin/:$PATH
