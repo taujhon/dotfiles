@@ -29,6 +29,8 @@ export NPM_CONFIG_PREFIX="$HOME/.npm"
 
 source ~/.local/share/omarchy/default/bash/rc
 source ~/.bash_aliases
+[[ -f /usr/share/bash-preexec/bash-preexec.sh ]] &&
+  source /usr/share/bash-preexec/bash-preexec.sh
 
 # OPTIONS
 
@@ -41,7 +43,15 @@ shopt -s histreedit
 shopt -s histverify
 shopt -s no_empty_cmd_completion
 
+HISTCONTROL=ignoredups:erasedups
+
 # FUNCTIONS
+
+precmd() {
+  history -a
+  history -c
+  history -r
+}
 
 cdmp() {
   dirs="$(/usr/bin/ls /run/media/$USER)"
