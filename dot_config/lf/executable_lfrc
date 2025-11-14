@@ -1,16 +1,20 @@
+# OPTIONS
+
+set cursorpreviewfmt "\033[7;2m"
+#set drawbox
+set icons
+set ifs "\n"
+set incsearch true
+set number
+#set previewer ~/.config/lf/preview
+set promptfmt "\033[34;1m%d\033[0m\033[1m%f\033[0m"
+set relativenumber
+set scrolloff 4
 set shell bash
 set shellopts '-eu'
-set ifs "\n"
-set scrolloff 4
-set cursorpreviewfmt "\033[7;2m"
-# set drawbox
-set incsearch true
-set promptfmt "\033[34;1m%d\033[0m\033[1m%f\033[0m"
-set icons
-set number
-set relativenumber
-# set previewer ~/.config/lf/preview
 set watch true
+
+# COMMANDS
 
 cmd open &{{
   case $(file --mime-type -Lb $f) in
@@ -38,8 +42,7 @@ cmd trash ${{
 
 cmd delete %{{
   set -f
-  printf "delete '$fx'?[y/n]"
-  read ans
+  read -n 1 -p "delete '$fx'?[y/n]" ans
   [[ $ans = "y" ]] && rm -rf $fx
 }}
 
@@ -167,6 +170,8 @@ cmd on-cd &{{
 
 # lf doc
 cmd doc $lf -doc | PAGER=less bat -p
+
+# MAPPINGS
 
 map ~ doc
 
@@ -336,8 +341,6 @@ cmd on-init :{{
       lf -remote "send $id set ratios 1:2"
     elif [ "$lf_width" -le 180 ]; then
       lf -remote "send $id set ratios 1:2:3"
-    else
-      lf -remote "send $id set ratios 1:2:3:5"
     fi
   }}
 

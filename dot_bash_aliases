@@ -45,6 +45,7 @@ croc_receive() {
 alias py='python3'
 alias ipy='ipython3 --no-banner --nosep'
 alias hmm='h-m-m'
+alias aic='ascii-image-converter'
 alias e='$EDITOR'
 alias se='sudoedit $EDITOR'
 alias cls='clear'
@@ -129,6 +130,7 @@ alias gdl_view='gallery-dl \
 # chezmoi
 alias cm='chezmoi'
 alias cma='chezmoi add'
+alias cmaa='chezmoi re-add'
 alias cmd='chezmoi diff'
 alias cme='chezmoi edit'
 alias cml='chezmoi list'
