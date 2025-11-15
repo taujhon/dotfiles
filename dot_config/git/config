@@ -25,7 +25,7 @@
   rb-abort = rebase abort
 [pull]
   default = current
-	rebase = true
+	; rebase = true
 [push]
   autoSetupRemote = true
   default = current
@@ -43,7 +43,7 @@
 [diff-so-fancy]
   markEmptyLines = false
 [pager]
-  diff = diff-so-fancy | $PAGER
+  diff = diff-so-fancy | bat
 [interactive]
   diffFilter = diff-so-fancy --patch
   singlekey = true
