@@ -9,14 +9,14 @@
   pushNonFastForward = false
   statusHints = false
 [alias]
-	br = branch
+  br = branch
   cl = clone
-	co = checkout
+  co = checkout
   pu = push
   up = pull
   upr = pull --rebase
-	ci = commit -v
-	st = status --short
+  ci = commit -v
+  st = status --short
   di = diff --output-indicator-new=' ' --output-indicator-old=' '
   adp = add --patch
   radd = remote add
@@ -25,13 +25,13 @@
   rb-abort = rebase abort
 [pull]
   default = current
-	; rebase = true
+  ; rebase = true
 [push]
   autoSetupRemote = true
   default = current
   followTags = true
 [init]
-	defaultBranch = dev
+  defaultBranch = dev
 [status]
   branch = true
   showStash = true
@@ -61,7 +61,7 @@
 [tag]
   sort = -taggerdate
 [color]
-	; pager = no
+  ; pager = no
 [color "diff"]
   meta       = black bold
   frag       = magenta
@@ -83,17 +83,21 @@
   insteadof = "gh:"
 [url "https://gist.github.com/"]
   insteadof = "gist:"
+[url "https://gitlab.com/"]
+  insteadof = "gl:"
+[url "https://codeberg.org/"]
+  insteadof = "cb:"
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
 [user]
-	name = Taujhon Maharlika
-	email = taujhonmaharlika@gmail.com
+  name = Taujhon Maharlika
+  email = taujhonmaharlika@gmail.com
 [credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+  helper = 
+  helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+  helper = 
+  helper = !/usr/bin/gh auth git-credential
