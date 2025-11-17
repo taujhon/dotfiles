@@ -48,7 +48,6 @@
   singlekey = true
 [commit]
   template = ~/.config/git/template
-  ; gpgSign = true
 [rebase]
   autoStash = true
   missingCommitCheck = warn
