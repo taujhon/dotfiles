@@ -24,6 +24,7 @@ export PATH
 
 export INTERNAL_AUDIO_SINK=$(pactl list sources | awk '/\.monitor/ { print $2 }')
 export NPM_CONFIG_PREFIX="$HOME/.npm"
+export LESS="-IFRS --incsearch --mouse --no-histdups --use-color"
 
 [[ $- != *i* ]] && return
 
