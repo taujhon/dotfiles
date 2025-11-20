@@ -1,0 +1,60 @@
+[[ $- != *i* ]] && return
+
+if [[ -d /usr/share/omarchy-zsh/conf.d ]]; then
+  for config in /usr/share/omarchy-zsh/conf.d/*.zsh; do
+    [[ -f "$config" ]] && source "$config"
+  done
+fi
+
+if [[ -d /usr/share/omarchy-zsh/functions ]]; then
+  for func in /usr/share/omarchy-zsh/functions/*.zsh; do
+    [[ -f "$func" ]] && source "$func"
+  done
+fi
+
+# EXTRA ZSH SCRIPTS
+scripts=(
+  /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+  /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  ~/.bash_aliases
+)
+for scr in "${scripts[@]}"; do
+  [[ -f $scr ]] && source "$scr"
+done
+
+# cursor
+bindkey -v # vi mode
+export KEYTIMEOUT=1
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+precmd_cursor() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+precmd_functions+=(precmd_cursor)
+
+# buffer text history filter
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
+# case-insensitive tab completion
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
