@@ -6,7 +6,7 @@ add_newline = false
 [directory]
 style = "blue"
 truncation_length = 3
-truncation_symbol = '../'
+truncation_symbol = './'
 
 [character]
 # success_symbol = "[❯](green)"
