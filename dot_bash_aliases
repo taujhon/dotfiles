@@ -42,6 +42,16 @@ croc_receive() {
   CROC_SECRET="$1" croc --ip "$2"
 }
 
+cdmp() {
+  local dirs="$(/usr/bin/ls /run/media/$USER)"
+  local dircount=$(echo "$dirs" | wc -l)
+  if [[ $dircount -gt 1 ]]; then
+    cd "$(echo "$dirs" | fzf || echo .)"
+  elif [[ $dircount -eq 1 ]]; then
+    cd "/run/media/$USER/$dirs"
+  fi
+}
+
 alias py='python3'
 alias ipy='ipython3 --no-banner --nosep'
 alias hmm='h-m-m'

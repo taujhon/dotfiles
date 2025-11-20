@@ -1,3 +1,29 @@
+append_path() {
+  case ":$PATH:" in
+    *:"$1":*) ;;
+    *) PATH="${PATH:+$PATH:}$1"
+  esac
+}
+
+clean_path() {
+  PATH="$(printf "${PATH//:/\\n}" | awk '!visited[$0]++' | tr '\n' ':' | sed 's/:$//')"
+}
+
+clean_path
+
+append_path "/opt/android-sdk/cmdline-tools/latest/bin"
+append_path "/opt/android-sdk/platform-tools"
+append_path "$HOME/.cargo/bin"
+append_path "$HOME/.config/composer/vendor/bin"
+append_path "$HOME/.npm/bin"
+append_path "$HOME/perl5/bin"
+
+export PATH
+
+export INTERNAL_AUDIO_SINK=$(pactl list sources | awk '/\.monitor/ { print $2 }')
+export NPM_CONFIG_PREFIX="$HOME/.npm"
+export LESS="-IFRS --incsearch --mouse --no-histdups --use-color"
+
 [[ $- != *i* ]] && return
 
 if [[ -d /usr/share/omarchy-zsh/conf.d ]]; then
