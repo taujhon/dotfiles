@@ -129,14 +129,6 @@ alias wifi_list='iwctl station wlan0 get-networks'
 alias wifi_connect='iwctl station wlan0 connect'
 alias wifi_disconnect='iwctl station wlan0 disconnect'
 
-# gallery-dl
-alias gdl='gallery-dl \
-  --destination ~/.gallery-dl/ \
-  --exec-after "~/scripts/gdl.sh {_directory}"'
-alias gdl_view='gallery-dl \
-  --destination ~/.gallery-dl/ \
-  --exec-after "~/scripts/gdlv.sh {_directory}"'
-
 # chezmoi
 alias cm='chezmoi'
 alias cma='chezmoi add'
