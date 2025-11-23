@@ -70,7 +70,7 @@ zle-line-init() {
 }
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
-precmd_cursor() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+precmd_cursor() { echo -ne '\e[5 q'; } # Use beam shape cursor for each new prompt.
 precmd_functions+=(precmd_cursor)
 
 # buffer text history filter
@@ -84,3 +84,7 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 # case-insensitive tab completion
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# auto rehash
+precmd_rehash() { rehash; }
+precmd_functions+=(precmd_rehash)
