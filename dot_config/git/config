@@ -11,17 +11,28 @@
 [alias]
   br = branch
   cl = clone
-  co = checkout
+  ch = checkout
   pu = push
   up = pull
   upr = pull --rebase
-  ci = commit -v
+  fe = fetch
+  co = commit --verbose
+  coa = commit --ammend --verbose
+  com = commit --message
+  coam = commit --ammend --message
   st = status --short
+  rmc = rm --cached
   di = diff --output-indicator-new=' ' --output-indicator-old=' '
+  ad = add
   adp = add --patch
-  radd = remote add
-  lg = log --all --graph --pretty=format:'%C(magenta)%h %an %ar%C(auto) %D%n%s%n'
-  rb-abort = rebase abort
+  rt = remote
+  rta = remote add
+  lo = log --graph --pretty=format:'%C(magenta)%h %an %ar%C(auto) %D%n%s%n'
+  loa = log --all --graph --pretty=format:'%C(magenta)%h %an %ar%C(auto) %D%n%s%n'
+  re = reset
+  rs = restore
+  rss = restore --staged
+  rb = rebase
 [pull]
   default = current
   ; rebase = true
