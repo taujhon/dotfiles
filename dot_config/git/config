@@ -9,31 +9,32 @@
   pushNonFastForward = false
   statusHints = false
 [alias]
-  br = branch
-  cl = clone
-  ch = checkout
-  sw = switch
-  pu = push
-  up = pull
-  upr = pull --rebase
-  fe = fetch
+  st = status --short
+  lo = log --graph --pretty=format:'%C(magenta)%h %an %ar%C(auto) %D%n%s%n'
+  loa = log --all --graph --pretty=format:'%C(magenta)%h %an %ar%C(auto) %D%n%s%n'
+  di = diff --output-indicator-new=' ' --output-indicator-old=' '
+  ad = add
+  adp = add --patch
   co = commit --verbose
   coa = commit --ammend --verbose
   com = commit --message
   coam = commit --ammend --message
-  st = status --short
-  rmc = rm --cached
-  di = diff --output-indicator-new=' ' --output-indicator-old=' '
-  ad = add
-  adp = add --patch
-  rt = remote
-  rta = remote add
-  lo = log --graph --pretty=format:'%C(magenta)%h %an %ar%C(auto) %D%n%s%n'
-  loa = log --all --graph --pretty=format:'%C(magenta)%h %an %ar%C(auto) %D%n%s%n'
   re = reset
   rs = restore
   rss = restore --staged
+  rmc = rm --cached
+  br = branch
+  sw = switch
+  ch = checkout
+  fe = fetch
+  rt = remote
+  rta = remote add
+  cl = clone
+  up = pull
+  upr = pull --rebase
   rb = rebase
+  me = merge
+  pu = push
 [pull]
   default = current
   ; rebase = true
