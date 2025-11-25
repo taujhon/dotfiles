@@ -12,6 +12,7 @@
   br = branch
   cl = clone
   ch = checkout
+  sw = switch
   pu = push
   up = pull
   upr = pull --rebase
