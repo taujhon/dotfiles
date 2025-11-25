@@ -16,9 +16,9 @@
   ad = add
   adp = add --patch
   co = commit --verbose
-  coa = commit --ammend --verbose
+  coa = commit --amend --verbose
   com = commit --message
-  coam = commit --ammend --message
+  coam = commit --amend --message
   re = reset
   rs = restore
   rss = restore --staged
