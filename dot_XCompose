@@ -1,0 +1,11 @@
+include "%H/.local/share/omarchy/default/xcompose"
+
+# Identification
+<Multi_key> <space> <1> <n> : "taujhon"
+<Multi_key> <space> <1> <e> : "taujhonmaharlika@gmail.com"
+<Multi_key> <space> <2> <n> : "jjazzer"
+<Multi_key> <space> <2> <e> : "jhonjassergarcia@gmail.com"
+
+# Extra characters
+<Multi_key> <n> <w> : "ñ"
+<Multi_key> <u> <n> <w> : "Ñ"

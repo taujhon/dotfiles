@@ -1,0 +1,152 @@
+suco() { su "$USER" -c "$*"; }
+
+get_ipaddress() {
+  ip -4 -o address | awk '/wlan0/ { sub(/\/./, ""); print $4 }'
+}
+
+rescon() {
+  while getopts 'c:m:' OPT; do
+    case $OPT in
+      c) local CPU_QUOTA="$OPTARG" ;;
+      m) local MEMORY_MAX="$OPTARG" ;;
+    esac
+  done
+  local ARGS=("${@:OPTIND}")
+  systemd-run --user --scope -q \
+    -p MemoryMax="$MEMORY_MAX" \
+    -p CPUQuota="$CPU_QUOTA" \
+    "${ARGS[@]}"
+}
+
+croc_send() {
+  case "$1" in
+    -l|--local)
+      crocsec="$2"
+      shift 2
+      CROC_SECRET="$crocsec" croc --local send "$@"
+      ;;
+    *)
+      crocsec="$1"
+      shift
+      CROC_SECRET="$crocsec" croc send "$@"
+  esac
+}
+
+croc_receive() {
+  CROC_SECRET="$1" croc --ip "$2"
+}
+
+cdmp() {
+  local dirs="$(/usr/bin/ls /run/media/$USER)"
+  local dircount=$(echo "$dirs" | wc -l)
+  if [[ $dircount -gt 1 ]]; then
+    cd "$(echo "$dirs" | fzf --query "$*" || echo .)"
+  elif [[ $dircount -eq 1 ]]; then
+    cd "/run/media/$USER/$dirs"
+  fi
+}
+
+alias py='python3'
+alias ipy='ipython3 --no-banner --nosep'
+alias hmm='h-m-m'
+alias aic='ascii-image-converter'
+alias edit='$EDITOR'
+alias e='$EDITOR'
+alias se='sudoedit'
+alias cls='clear'
+alias now='date +%m-%d-%Y'
+alias lspath='printf "${PATH//:/\\n}\n"'
+alias lsenv='env | sort'
+
+alias astroterm_here='astroterm -c -C -u -m -i Manila'
+
+# system
+alias disable_ptrace="echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope"
+alias enable_ptrace="echo 1 | sudo tee /proc/sys/kernel/yama/ptrace_scope"
+
+# package managers
+alias pm='pacman'
+alias spm='sudo pacman'
+alias pms='sudo pacman -S'
+alias pmss='pacman -Ss'
+alias pmsi='pacman -Si'
+alias pmsg='pacman -Sg'
+alias pmsy='sudo pacman -Sy'
+alias pmsyu='sudo pacman -Syu'
+alias pmq='pacman -Q'
+alias pmqs='pacman -Qs'
+alias pmql='pacman -Ql'
+alias pmqn='pacman -Qen'
+alias pmqm='pacman -Qem'
+alias pmqu='pacman -Qeu'
+alias pmr='sudo pacman -R'
+alias pmrn='sudo pacman -Rn'
+alias pmrns='sudo pacman -Rns'
+alias pmrnsu='sudo pacman -Rnsu'
+alias pmlsne='pacman -Qenq | expac "%-30n %m" -H M -l"\n" -Q - | sort -hrk 2'
+alias pmlsme='pacman -Qemq | expac "%-30n %m" -H M -l"\n" -Q - | sort -hrk 2'
+alias pmlsnet='pacman -Qenq | expac --timefmt="%F %T" "%-30l %n" - | sort -nr'
+alias pmlsmet='pacman -Qemq | expac --timefmt="%F %T" "%-30l %n" - | sort -nr'
+alias pmlsnd='pacman -Qdnq | expac "%-30n %m" -H M -l"\n" -Q - | sort -hrk 2'
+alias pmlsmd='pacman -Qdmq | expac "%-30n %m" -H M -l"\n" -Q - | sort -hrk 2'
+alias pmlsndt='pacman -Qdnq | expac --timefmt="%F %T" "%-30l %n" - | sort -nr'
+alias pmlsmdt='pacman -Qdmq | expac --timefmt="%F %T" "%-30l %n" - | sort -nr'
+alias yys='yay -S'
+alias yyss='yay -Ss'
+alias yysy='yay -Sy'
+alias yysyu='yay -Syu'
+alias yyqu='yay -Qeum'
+# colors
+# alias l='ls -vCF --color=auto --group-directories-first'
+# alias ll='ls -lhvAF --color=auto --group-directories-first'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias get_color='magick '\''{}'\'' -resize 200x200 -colors 5 \
+  -unique-colors txt:- | grep -o '\''#[A-F0-9]\{6\}'\'' | pastel format hex'
+
+# backup
+alias clone='rsync -ahrzLR --info=progress2 --mkpath --no-i-r'
+alias clonetest='rsync -ahnrzLR --info=progress2 --mkpath --no-i-r' 
+
+# shell
+alias err='echo $?'
+alias ea='$EDITOR ~/.aliases'
+alias sep='sudoedit /etc/profile'
+# bash
+if [[ $0 =~ "/.*bin/bash" ]]; then
+  alias binds='bind -P'
+  alias erc='$EDITOR ~/.bashrc'
+  alias ep='$EDITOR ~/.bash_profile'
+  alias serc='sudoedit /etc/bash.bashrc'
+  alias so='source ~/.bashrc'
+  alias sop='source ~/.bash_profile'
+fi
+# zsh
+if [[ $0 =~ "/.*bin/zsh" ]]; then
+  alias binds='bindkey -L'
+  alias bindl='bindkey -l'
+  alias bindm='bindkey -M'
+  alias erc='$EDITOR ~/.zshrc'
+  alias ep='$EDITOR ~/.zprofile'
+  alias sezp='sudo $EDITOR /etc/zsh/zprofile'
+  alias so='source ~/.zshrc'
+  alias sop='source ~/.zprofile'
+fi
+
+# iwctl wlan
+alias wifi_show='iwctl station wlan0 show'
+alias wifi_scan='iwctl station wlan0 scan'
+alias wifi_list='iwctl station wlan0 get-networks'
+alias wifi_connect='iwctl station wlan0 connect'
+alias wifi_disconnect='iwctl station wlan0 disconnect'
+
+# chezmoi
+alias cm='chezmoi'
+alias cma='chezmoi add'
+alias cmaa='chezmoi re-add'
+alias cmd='chezmoi diff'
+alias cme='chezmoi edit'
+alias cml='chezmoi list'
+alias cmp='chezmoi apply'
+alias cmg='chezmoi git'
