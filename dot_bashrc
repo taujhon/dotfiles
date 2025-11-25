@@ -39,10 +39,14 @@ export LESS="-IFRS --incsearch --mouse --no-histdups --use-color"
 
 [[ $- != *i* ]] && return
 
-source ~/.local/share/omarchy/default/bash/rc
-source ~/.aliases
-[[ -f /usr/share/bash-preexec/bash-preexec.sh ]] &&
-  source /usr/share/bash-preexec/bash-preexec.sh
+scripts=(
+  /usr/share/bash-preexec/bash-preexec.sh
+  ~/.local/share/omarchy/default/bash/rc
+  ~/.bash_aliases
+)
+for scr in "${scripts[@]}"; do
+  [[ -f $scr ]] && source "$scr"
+done
 
 # OPTIONS
 
@@ -67,10 +71,9 @@ precmd() {
 
 # SHELL TOOLS
 
-cmds="
-"
+cmds=()
 
-for cmd in $cmds; do
+for cmd in "${cmds[@]}"; do
   if command -v $(cut -d ' ' -f 1) >/dev/null; then
     source <(cmd)
   fi
