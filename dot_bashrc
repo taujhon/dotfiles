@@ -13,18 +13,26 @@ clean_path() {
 
 clean_path
 
-append_path "/opt/android-sdk/cmdline-tools/latest/bin"
-append_path "/opt/android-sdk/platform-tools"
+[[ ! -v ANDROID_HOME ]] &&
+  export ANDROID_HOME='/opt/android-sdk'
+[[ ! -v ANDROID_SDK_ROOT ]] &&
+  export ANDROID_SDK_ROOT="$ANDROID_HOME"
+
+append_path "$ANDROID_HOME/cmdline-tools/latest/bin"
+append_path "$ANDROID_HOME/platform-tools"
 append_path "$HOME/.cargo/bin"
 append_path "$HOME/.config/composer/vendor/bin"
+append_path "$HOME/.go/bin"
 append_path "$HOME/.npm/bin"
-append_path "$HOME/perl5/bin"
+append_path "$HOME/.perl5/bin"
 
 export PATH
 
 export INTERNAL_AUDIO_SINK=$(pactl list sources | awk '/\.monitor/ { print $2 }')
-export NPM_CONFIG_PREFIX="$HOME/.npm"
+
 export GOPATH="$HOME/.go"
+export NPM_CONFIG_PREFIX="$HOME/.npm"
+export PERL5LIB="$HOME/.perl5"
 export LESS="-IFRS --incsearch --mouse --no-histdups --use-color"
 
 # INTERACTIVE
