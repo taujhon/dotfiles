@@ -24,12 +24,15 @@ export PATH
 
 export INTERNAL_AUDIO_SINK=$(pactl list sources | awk '/\.monitor/ { print $2 }')
 export NPM_CONFIG_PREFIX="$HOME/.npm"
+export GOPATH="$HOME/.go"
 export LESS="-IFRS --incsearch --mouse --no-histdups --use-color"
+
+# INTERACTIVE
 
 [[ $- != *i* ]] && return
 
 source ~/.local/share/omarchy/default/bash/rc
-source ~/.bash_aliases
+source ~/.aliases
 [[ -f /usr/share/bash-preexec/bash-preexec.sh ]] &&
   source /usr/share/bash-preexec/bash-preexec.sh
 
@@ -46,7 +49,7 @@ shopt -s no_empty_cmd_completion
 
 HISTCONTROL=ignoredups:erasedups
 
-# FUNCTIONS
+# SHELL FUNCTIONS
 
 precmd() {
   history -a
