@@ -1,0 +1,8 @@
+source ~/.aliases
+
+alias binds='bind -P'
+alias erc='$EDITOR ~/.bashrc'
+alias ep='$EDITOR ~/.bash_profile'
+alias serc='sudoedit /etc/bash.bashrc'
+alias so='source ~/.bashrc'
+alias sop='source ~/.bash_profile'

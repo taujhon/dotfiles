@@ -1,0 +1,10 @@
+source ~/.aliases
+
+alias binds='bindkey -L'
+alias bindl='bindkey -l'
+alias bindm='bindkey -M'
+alias erc='$EDITOR ~/.zshrc'
+alias ep='$EDITOR ~/.zprofile'
+alias sezp='sudo $EDITOR /etc/zsh/zprofile'
+alias so='source ~/.zshrc'
+alias sop='source ~/.zprofile'

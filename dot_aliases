@@ -113,26 +113,6 @@ alias clonetest='rsync -ahnrzLR --info=progress2 --mkpath --no-i-r'
 alias err='echo $?'
 alias ea='$EDITOR ~/.aliases'
 alias sep='sudoedit /etc/profile'
-# bash
-if [[ $0 =~ "/.*bin/bash" ]]; then
-  alias binds='bind -P'
-  alias erc='$EDITOR ~/.bashrc'
-  alias ep='$EDITOR ~/.bash_profile'
-  alias serc='sudoedit /etc/bash.bashrc'
-  alias so='source ~/.bashrc'
-  alias sop='source ~/.bash_profile'
-fi
-# zsh
-if [[ $0 =~ "/.*bin/zsh" ]]; then
-  alias binds='bindkey -L'
-  alias bindl='bindkey -l'
-  alias bindm='bindkey -M'
-  alias erc='$EDITOR ~/.zshrc'
-  alias ep='$EDITOR ~/.zprofile'
-  alias sezp='sudo $EDITOR /etc/zsh/zprofile'
-  alias so='source ~/.zshrc'
-  alias sop='source ~/.zprofile'
-fi
 
 # iwctl wlan
 alias wifi_show='iwctl station wlan0 show'
