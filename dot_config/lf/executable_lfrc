@@ -11,7 +11,7 @@ set promptfmt "\033[34;1m%d\033[0m\033[1m%f\033[0m"
 set relativenumber
 set scrolloff 4
 set shell bash
-set shellopts '-euo pipefail'
+set shellopts '-eu'
 set watch true
 
 # COMMANDS
