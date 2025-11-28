@@ -9,6 +9,7 @@
   pushNonFastForward = false
   statusHints = false
 [alias]
+  cf = config
   st = status --short
   lo = log --graph --pretty=format:'%C(magenta)%h %an %ar%C(auto) %D%n%s%n'
   loa = log --all --graph --pretty=format:'%C(magenta)%h %an %ar%C(auto) %D%n%s%n'
