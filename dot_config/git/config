@@ -36,6 +36,7 @@
   rb = rebase
   me = merge
   pu = push
+  sv = stash
 [pull]
   default = current
   ; rebase = true
