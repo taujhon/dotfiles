@@ -1,7 +1,42 @@
+# -----------------------------------------------------------
+# Git Commit Message Template
+#
+# Adopted from Conventional Commits & Gitmoji for clarity.
+#
+# Format: <type>(<scope>): <subject>
+#
+# Body: Detailed explanation (wrap at 72 chars)
+#
+# Footer: Breaking Changes, Issue References (e.g., Closes #123)
+# -----------------------------------------------------------
 
-# feat: 
-# fix: 
-# fix: 
-# style: 
-# ci: 
-# deploy: 
+<type>(<scope>): <subject>
+
+# Example Commit Types (choose one, and add your preferred emoji):
+# ✨ feat: Introduces a new feature.
+# 🐛 fix: Patches a bug.
+# 📚 docs: Documentation-only changes.
+# 🎨 style: Code formatting, whitespace, or semi-colons (no code logic change).
+# ♻️ refactor: Code restructure that neither fixes a bug nor adds a feature.
+# ⚡️ perf: Improves performance.
+# 🧪 test: Adds or corrects tests.
+# 👷 ci: Changes to CI configuration files and scripts.
+# 🚀 deploy: Deployment-related changes.
+# 📦️ build: Changes that affect the build system or external dependencies.
+# 💥 breaking: Introduces a breaking API change (add to footer).
+# ⏪️ revert: Reverts a previous commit.
+# 🗑️ chore: Other changes that don't modify src or test files.
+
+# Scope (optional): The part of the codebase affected (e.g., 'auth', 'ui', 'api').
+
+# Subject (required): Concise, imperative mood (e.g., "add", "fix", "update"). Max 50 chars.
+
+# Body (optional):
+# Provide a more detailed explanation of the change.
+# Explain *what* was changed and *why* it was changed, not *how*.
+# Wrap lines at approximately 72 characters for readability in `git log`.
+
+# Footer (optional):
+# Add references to issues: Closes #ISSUE-ID, Fixes #BUG-ID.
+# Detail breaking changes: BREAKING CHANGE: Explains the breaking API change.
+# Co-authored-by: Another Dev <another.dev@example.com>
