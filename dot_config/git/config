@@ -45,7 +45,7 @@
   default = current
   followTags = true
 [init]
-  defaultBranch = dev
+  defaultBranch = main
 [status]
   branch = true
   showStash = true
