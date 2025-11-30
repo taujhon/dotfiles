@@ -1,7 +1,18 @@
 suco() { su "$USER" -c "$*"; }
 
 get_ipaddress() {
-  ip -4 -o address | awk '/wlan0/ { sub(/\/./, ""); print $4 }'
+  if [[ $1 == -s ]]; then
+    ip -4 -o address |
+      sed -n '/wlan0/p' |
+      tr -s ' ' |
+      cut -d ' ' -f 4
+  else
+    ip -4 -o address |
+      sed -n '/wlan0/p' |
+      tr -s ' ' |
+      cut -d ' ' -f 4 |
+      sed 's/\/[0-9]*$//'
+  fi
 }
 
 rescon() {
