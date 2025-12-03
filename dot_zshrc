@@ -52,11 +52,13 @@ if [[ -d /usr/share/omarchy-zsh/functions ]]; then
 fi
 
 # EXTRA ZSH SCRIPTS
+mkdir -p ~/.zshrc.d
 ZSH_PLUGINS='/usr/share/zsh/plugins'
 scripts=(
   "$ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh"
   "$ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
   "$HOME/.zsh_aliases"
+  "$HOME/.zshrc.d/lfcd"
 )
 for scr in "${scripts[@]}"; do
   [[ -f $scr ]] && source "$scr"
