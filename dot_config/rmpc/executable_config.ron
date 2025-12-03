@@ -42,6 +42,7 @@
       "5":       SwitchToTab("Albums"),
       "6":       SwitchToTab("Playlists"),
       "7":       SwitchToTab("Search"),
+      "8":       SwitchToTab("Visualizer"),
       "q":       Quit,
       ">":       NextTrack,
       "p":       TogglePause,
@@ -157,6 +158,10 @@
     (
       name: "Search",
       pane: Pane(Search),
+    ),
+    (
+      name: "Visualizer",
+      pane: Pane(Cava),
     ),
   ],
   cava: (
