@@ -8,7 +8,10 @@ append_path() {
 }
 
 clean_path() {
-  PATH="$(printf "${PATH//:/\\n}" | awk '!visited[$0]++' | tr '\n' ':' | sed 's/:$//')"
+  PATH="$(printf "${PATH//:/\\n}" |
+    awk '!visited[$0]++' |
+    tr '\n' ':' |
+    sed 's/:$//')"
 }
 
 clean_path
@@ -60,11 +63,11 @@ scripts=(
   "$HOME/.zsh_aliases"
   "$HOME/.zshrc.d"/*
 )
-for scr in "${scripts[@]}"; do
-  [[ -f $scr ]] && source "$scr"
+for s in "${scripts[@]}"; do
+  [[ -f $s ]] && source "$s"
 done
 
-# cursor
+# cursor and zle
 bindkey -v # vi mode
 export KEYTIMEOUT=1
 # Change cursor shape for different vi modes.

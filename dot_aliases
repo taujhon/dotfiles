@@ -1,3 +1,4 @@
+# alternative sudo
 suco() { su "$USER" -c "$*"; }
 
 get_ipaddress() {
@@ -15,6 +16,7 @@ get_ipaddress() {
   fi
 }
 
+# resource control
 rescon() {
   while getopts 'c:m:' OPT; do
     case $OPT in
@@ -57,6 +59,16 @@ cdmp() {
   fi
 }
 
+# now() {
+#   local args=()
+#   while getopts 'td:' OPT; do
+#     case $OPT in
+#       t) args+=(--) ;;
+#     esac
+#   done
+# }
+
+# utilities
 alias py='python3'
 alias ipy='ipython3 --no-banner --nosep'
 alias hmm='h-m-m'
@@ -120,7 +132,7 @@ alias get_color='magick '\''{}'\'' -resize 200x200 -colors 5 \
 
 # backup
 alias clone='rsync -ahrzLR --info=progress2 --mkpath --no-i-r'
-alias clonetest='rsync -ahnrzLR --info=progress2 --mkpath --no-i-r' 
+alias clonetest='rsync -ahnrzLR --info=progress2 --mkpath --no-i-r'
 
 # shell
 alias err='echo $?'
