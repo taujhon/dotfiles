@@ -50,12 +50,20 @@ croc_receive() {
 }
 
 cdmp() {
-  local dirs="$(/usr/bin/ls /run/media/$USER)"
-  local dircount=$(echo "$dirs" | wc -l)
-  if [[ $dircount -gt 1 ]]; then
-    cd "$(echo "$dirs" | fzf --query "$*" || echo .)"
-  elif [[ $dircount -eq 1 ]]; then
-    cd "/run/media/$USER/$dirs"
+  local user_mounts="/run/media/$USER"
+  local dir_count=$(\ls "$user_mounts" | wc -l)
+  local RELOAD="reload:ls \"$user_mounts\" || :"
+  local OPENER="echo \"$user_mounts/\"{}"
+  local PREVIEW="ls \"$user_mounts\"/{}"
+  if [[ $dir_count -gt 1 ]]; then
+    \cd "$(fzf \
+      --bind "start:$RELOAD" \
+      --bind "change:$RELOAD" \
+      --bind "enter:become:$OPENER" \
+      --preview "$PREVIEW" ||
+      echo "$PWD")"
+  elif [[ $dir_count -eq 1 ]]; then
+    \cd "$user_mounts"/*
   fi
 }
 
