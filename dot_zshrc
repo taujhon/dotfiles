@@ -36,7 +36,7 @@ export INTERNAL_AUDIO_SINK=$(pactl list sources | awk '/\.monitor/ { print $2 }'
 export GOPATH="$HOME/.go"
 export NPM_CONFIG_PREFIX="$HOME/.npm"
 export PERL5LIB="$HOME/.perl5"
-export LESS="-IFRS --incsearch --mouse --no-histdups --use-color"
+export LESS="-IRS --incsearch --mouse --no-histdups --use-color"
 
 # INTERACTIVE
 

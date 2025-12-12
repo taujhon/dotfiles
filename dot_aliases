@@ -49,21 +49,40 @@ croc_receive() {
   CROC_SECRET="$1" croc --ip "$2"
 }
 
-cdmp() {
+cdmnt() {
+  local user_mounts="/run/media/$USER"
+  local dir_count=$(\ls "$user_mounts" | wc -l)
+  local RELOAD="reload:ls \"$user_mounts\" || :"
+  local OPENER="echo \"$user_mounts/\"{}"
+  local PREVIEW="ls \"$user_mounts\"/{}"
+  if [[ $dir_count -gt 1 || true ]]; then
+    local sel="$(fzf \
+      --bind "start:$RELOAD" \
+      --bind "change:$RELOAD" \
+      --bind "enter:become:$OPENER" \
+      --preview "$PREVIEW" ||
+      echo "$PWD")"
+    [[ $sel ]] && \cd "$sel"
+  elif [[ $dir_count -eq 1 ]]; then
+    \cd "$user_mounts"/*
+  fi
+}
+
+umnt() {
   local user_mounts="/run/media/$USER"
   local dir_count=$(\ls "$user_mounts" | wc -l)
   local RELOAD="reload:ls \"$user_mounts\" || :"
   local OPENER="echo \"$user_mounts/\"{}"
   local PREVIEW="ls \"$user_mounts\"/{}"
   if [[ $dir_count -gt 1 ]]; then
-    \cd "$(fzf \
+    local sel="$(fzf \
       --bind "start:$RELOAD" \
       --bind "change:$RELOAD" \
       --bind "enter:become:$OPENER" \
-      --preview "$PREVIEW" ||
-      echo "$PWD")"
+      --preview "$PREVIEW")"
+    [[ $sel ]] && sync && udiskie-umount "$sel"
   elif [[ $dir_count -eq 1 ]]; then
-    \cd "$user_mounts"/*
+    udiskie-umount "$user_mounts"/*
   fi
 }
 
